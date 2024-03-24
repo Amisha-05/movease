@@ -5,7 +5,10 @@ import { useEffect, useRef } from 'react';
 import { useState } from 'react';
 import {getDownloadURL, getStorage,ref, uploadBytesResumable} from 'firebase/storage';
 import { app } from '../Firebase';
-import { updateUserStart,updateUserFailure,updateUserSuccess, deleteUserFailure, deleteUserStart, deleteUserSuccess } from '../redux/user/userSlice';
+import { updateUserStart,updateUserFailure,
+  updateUserSuccess, deleteUserFailure,
+   deleteUserStart, deleteUserSuccess,
+  signOutUserFailure,signOutUserSuccess,signOutUserStart } from '../redux/user/userSlice';
 import { useDispatch } from 'react-redux';
 //firebase storage
 // allow read; 
@@ -95,8 +98,10 @@ const handleDeleteUser=async()=>
     try {
       dispatch(deleteUserStart());
       const res=await fetch(`http://localhost:3000/api/user/delete/${currentUser._id}`,
+     
     {
-      method:'DELETE'});
+      method:'DELETE',
+      credentials: 'include'});
       const data=await res.json();
       if(data.success===false)
     {
@@ -107,6 +112,22 @@ dispatch(deleteUserSuccess(data));
     } catch (error) {
       dispatch(deleteUserFailure(error.message));
       
+    }
+  }
+  const handleSignOut=async()=>
+  {
+    try {
+      dispatch(signOutUserStart())
+      const res=await fetch('/api/auth/signout');
+      const data=await res.json;
+      if(data.success===false)
+      {
+        dispatch(deleteUserFailure(data.message));
+        return;
+      }
+      dispatch(signOutUserSuccess(data))
+    } catch (error) {
+      dispatch(deleteUserFailure(data.message));
     }
   }
 return (
@@ -149,7 +170,7 @@ return (
   </form>
    <div className=' flex justify-between mt-3 '>
     <span onClick={handleDeleteUser} className='text-red-700 cursor-pointer'> Delete account</span>
-    <span className='text-red-700 cursor-pointer'> Sign out</span>
+    <span onClick={handleSignOut}   className='text-red-700 cursor-pointer'> Sign out</span>
    </div>
    <p className='text-red-700 mt-5 '> { error? error:''}</p>
    <p className='text-green-700 mt-5 '> { updateSuccess? "User Updated Successfully":''}</p>
