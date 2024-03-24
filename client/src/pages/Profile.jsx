@@ -13,12 +13,13 @@ import { useDispatch } from 'react-redux';
 // request.resource.size<2 * 1024 * 1024 && 
 // request.resource.contentType.matches('image/.*')
 export default function Profile() {
-  const {currentUser}=useSelector((state)=>state.user);
+  const {currentUser,loading,error}=useSelector((state)=>state.user);
   const fileRef=useRef(null);
   const[file,setFile]=useState(undefined);
   const[filePerc,setFilePerc]=useState(0);
   const[fileUploadError,setFileUploadError]=useState(false);
   const [formData,setFormData]=useState({});
+  const[updateSuccess,setUpdateSuccess]=useState(false);
   const dispatch=useDispatch();
   console.log(formData);
 
@@ -70,6 +71,7 @@ const handleSubmit= async (e)=>
         'Content-Type':'application/json',
       },
       body:JSON.stringify(formData),
+      credentials:'include'
 
     });
     console.log(res);
@@ -80,8 +82,11 @@ dispatch(updateUserFailure(data.message));
 return;
     }
 
+
 dispatch(updateUserSuccess(data));
+   setUpdateSuccess(true);
   } catch (error) {
+   
 
     dispatch(updateUserFailure(error.message));
   }
@@ -122,12 +127,15 @@ return (
     onChange={handleChange}/>
     <input type="password" placeholder='password' id ='password'  onChange={handleChange}
      className='border p-3 rounded-lg   '/>
-    <button className='bg-slate-700 text-white rounded-lg p-3 uppercase hover:opacity-95 disabled:opacity-80'>Update</button>
+    <button  disabled={loading }className='bg-slate-700 text-white rounded-lg p-3 uppercase hover:opacity-95 disabled:opacity-80'>
+      { loading? 'loading...':'Update'}</button>
   </form>
    <div className=' flex justify-between mt-3 '>
     <span className='text-red-700 cursor-pointer'> Delete account</span>
     <span className='text-red-700 cursor-pointer'> Sign out</span>
    </div>
+   <p className='text-red-700 mt-5 '> { error? error:''}</p>
+   <p className='text-green-700 mt-5 '> { updateSuccess? "User Updated Successfully":''}</p>
     </div>
   )
 }
