@@ -53,8 +53,8 @@ export default function Home() {
     <div>
       {/* top */}
       <div className='flex flex-col lg:flex-row gap-28 pt-32 px-3 pd-5 max-w-6xl mx-auto'>
-  <div className='flex flex-col lg:w-1/2'>
-    <h1 className='text-slate-700 font-bold text-3xl lg:text-6xl font-custom'>
+  <div className='flex flex-col lg:w-1/2 '>
+    <h1 className='text-slate-700 font-bold text-3xl lg:text-6xl font-custom '>
       Find your next <span className='text-slate-500'>perfect</span> place with ease
     </h1>
     <div className='text-gray-500 text-xs sm:text-sm mt-3 '>
@@ -67,7 +67,7 @@ export default function Home() {
       Let's get started...
     </Link>
   </div>
-  <div className='mt-6 lg:mt-0 lg:w-1/2 lg:ml-auto'>
+  <div className=' lg:mt-6  lg:w-1/2  lg:ml-auto '>
     <img src={imageSrc} alt='Your image' className='w-full lg:w-500 h-300' />
   </div>
 </div>

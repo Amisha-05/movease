@@ -202,7 +202,7 @@ export default function Profile() {
             onChange={handleChange} />
           <input type="password" placeholder='password' id='password' onChange={handleChange}
             className='border p-3 rounded-lg  font-custom ' />
-          <button disabled={loading} className='bg-slate-700 text-white rounded-lg p-3 uppercase hover:opacity-95 disabled:opacity-80 font-custom'>
+          <button disabled={loading} className='bg-slate-700 text-white rounded-lg p-3 uppercase hover:opacity-95 disabled:opacity-80 font-custom '>
             {loading ? 'loading...' : 'Update'}</button>
           <Link className='bg-green-700 text-white p-3 rounded-lg uppercase text-center hover:opacity-95 font-custom' to={"/create-listing"}>
             Create Listing
@@ -218,13 +218,13 @@ export default function Profile() {
 
       {/* Show Listings Section */}
       <div className='flex flex-col mt-2 p-1 max-w-lg border border-slate-700 rounded-md shadow-2xl  mx-auto'>
-        <button className='text-white w-full font-custom text-xl border  bg-slate-700 hover:bg-slate-600  rounded-md p-2' onClick={handleShowListings}>Show Listings</button>
+        <button className='text-white w-full font-custom lg:text-xl border  bg-slate-700 hover:bg-slate-600  rounded-md p-2' onClick={handleShowListings}>Show Listings</button>
         <p className='text-red-700 mt-2 font-custom '>{showListingsError ? 'Error Showing Listings' : ''}</p>
 
         {/* User Listings */}
         {userListings && userListings.length > 0 && (
-          <div className='flex flex-col gap-4'>
-            <h1 className='text-center mt-4 text-2xl font-semibold font-custom text-slate-700'>Your Listings</h1>
+          <div className='flex flex-col gap-4 '>
+            <h1 className='text-center mt-4 lg:text-2xl font-semibold font-custom text-slate-700 ' >Your Listings</h1>
             {userListings.map((listing) => (
               <div
                 key={listing._id}
@@ -238,13 +238,13 @@ export default function Profile() {
                   />
                 </Link>
                 <Link
-                  className='text-slate-700 font-semibold  hover:underline truncate flex-1 font-custom text-xl'
+                  className='text-slate-700 font-semibold  hover:underline truncate flex-1 font-custom lg:text-2xl'
                   to={`/listing/${listing._id}`}
                 >
                   <p>{listing.name}</p>
                 </Link>
 
-                <div className='flex flex-col item-center font-custom'>
+                <div className='flex flex-col item-center font-custom lg:text-2xl sm:text-sm'>
                   <button onClick={() => handleListingDelete(listing._id)}
 
                     className='text-red-700 uppercase font-custom'
@@ -253,7 +253,7 @@ export default function Profile() {
                   </button>
                   <Link to={`/update-listing/${listing._id}`}>
 
-                    <button className='text-green-700 uppercase font-custom'>Edit</button>
+                    <button className='text-green-700 uppercase font-custom lg:text-2xl sm:text-sm'>Edit</button>
 
                   </Link>
                 </div>

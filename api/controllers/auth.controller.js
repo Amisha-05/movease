@@ -2,27 +2,37 @@ import User from '../models/user.model.js';
 import bcryptjs from 'bcryptjs';
 import {errorHandler} from "../utils/error.js";
 import jwt from 'jsonwebtoken';
-export const signup= async (req,res,next)=>//next kyu vo middleware jo create kiya tha error fnd krne ke liye !!
-{
-   
-   const {username,email,password}=req.body;
-   const hashedPassword=bcryptjs.hashSync(password,10);//we can hased the password mtlb we can protect the password to see from databases
-   const newUser = new User({username,email,password:hashedPassword});
-   try{
-    await newUser.save();//this will save it to a database
-  
-    res.status(201).json({message:"user created succesfully!!!"});
-    }
-    catch(error)
-    {
+export const signup = async (req, res, next) => {
+    const { username, email, password } = req.body;
+
+    try {
+        // Check if the email already exists in the database
+        const emailCheck = await User.findOne({ email });
+        if (emailCheck) {
+            return next(errorHandler(400, 'Email already exists!'));
+        }
+
+        // Check if the username already exists in the database
+        const usernameCheck = await User.findOne({ username });
+        if (usernameCheck) {
+            return next(errorHandler(400, 'Username already exists!'));
+        }
+
+        // Hash the password
+        const hashedPassword = bcryptjs.hashSync(password, 10);
+
+        // Create a new user
+        const newUser = new User({ username, email, password: hashedPassword });
+
+        // Save the new user to the database
+        await newUser.save();
+
+        res.status(201).json({ message: "User created successfully!" });
+    } catch (error) {
+        // Pass the error to the error handling middleware
         next(error);
-        //we can also create manual error like if the users is not putting too much long password we can manually tell them but this is not an error! 
-        //see utils me 
-        //next(errorHandler(500,'error from fucntion))==ye manually humne banaya hai  
-        //we dont need that as of now !
-    };
-}
-        export  const signin =async(req,res,next)=>
+    }
+};   export  const signin =async(req,res,next)=>
         {
             const{email,password}=req.body;
             try {

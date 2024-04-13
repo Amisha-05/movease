@@ -27,6 +27,12 @@ export const updateUser = async (req, res, next) => {
     if(check){
       return next(errorHandler(404, 'User already exists!'));
     }
+    const checkEmail = await User.findOne({ email: req.body.email });
+    console.log(checkEmail);
+
+    if(checkEmail){
+      return next(errorHandler(404, 'email already exists!'));
+    }
 
     const updatedUser = await User.findByIdAndUpdate(
       req.params.id,
