@@ -175,16 +175,17 @@ const listingId=params.listingId;
     }
   };
   return (
-    <main className='p-3 max-w-4xl mx-auto'>
-      <h1 className='text-3xl font-semibold text-center my-7'>
+    
+    <main className='p-6 max-w-4xl mx-auto border border-slate-900 shadow-2xl mt-5  '>
+      <h1 className=' p-2 text-3xl font-semibold text-center my-7 font-custom text-slate-100 bg-slate-600'>
         Update a Listing
       </h1>
-      <form onSubmit={handleSubmit} className='flex flex-col sm:flex-row gap-4'>
+      <form onSubmit={handleSubmit} className='flex flex-col sm:flex-row gap-12'>
         <div className='flex flex-col gap-4 flex-1'>
           <input
             type='text'
             placeholder='Name'
-            className='border p-3 rounded-lg'
+            className='border p-3 rounded-lg font-custom text-lg'
             id='name'
             maxLength='62'
             minLength='10'
@@ -195,7 +196,7 @@ const listingId=params.listingId;
           <textarea
             type='text'
             placeholder='Description'
-            className='border p-3 rounded-lg'
+            className='border p-3 rounded-lg font-custom text-lg'
             id='description'
             required
             onChange={handleChange}
@@ -204,14 +205,14 @@ const listingId=params.listingId;
           <input
             type='text'
             placeholder='Address'
-            className='border p-3 rounded-lg'
+            className='border p-3 rounded-lg font-custom text-lg'
             id='address'
             required
             onChange={handleChange}
             value={formData.address}
           />
           <div className='flex gap-6 flex-wrap'>
-            <div className='flex gap-2'>
+            <div className='flex gap-2 font-custom text-lg'>
               <input
                 type='checkbox'
                 id='sale'
@@ -221,7 +222,7 @@ const listingId=params.listingId;
               />
               <span>Sell</span>
             </div>
-            <div className='flex gap-2'>
+            <div className='flex gap-2 font-custom text-lg'>
               <input
                 type='checkbox'
                 id='rent'
@@ -231,7 +232,7 @@ const listingId=params.listingId;
               />
               <span>Rent</span>
             </div>
-            <div className='flex gap-2'>
+            <div className='flex gap-2 font-custom text-lg'>
               <input
                 type='checkbox'
                 id='parking'
@@ -241,7 +242,7 @@ const listingId=params.listingId;
               />
               <span>Parking spot</span>
             </div>
-            <div className='flex gap-2'>
+            <div className='flex gap-2 font-custom text-lg'>
               <input
                 type='checkbox'
                 id='furnished'
@@ -251,7 +252,7 @@ const listingId=params.listingId;
               />
               <span>Furnished</span>
             </div>
-            <div className='flex gap-2'>
+            <div className='flex gap-2 font-custom text-lg'>
               <input
                 type='checkbox'
                 id='offer'
@@ -263,44 +264,44 @@ const listingId=params.listingId;
             </div>
           </div>
           <div className='flex flex-wrap gap-6'>
-            <div className='flex items-center gap-2'>
+            <div className='flex items-center gap-2 font-custom text-lg'>
               <input
                 type='number'
                 id='bedrooms'
                 min='1'
                 max='10'
                 required
-                className='p-3 border border-gray-300 rounded-lg'
+                className='p-3 border border-gray-300 rounded-lg font-custom text-lg'
                 onChange={handleChange}
                 value={formData.bedrooms}
               />
               <p>Beds</p>
             </div>
-            <div className='flex items-center gap-2'>
+            <div className='flex items-center gap-2 font-custom text-lg'>
               <input
                 type='number'
                 id='bathrooms'
                 min='1'
                 max='10'
                 required
-                className='p-3 border border-gray-300 rounded-lg'
+                className='p-3 border border-gray-300 rounded-lg font-custom text-lg'
                 onChange={handleChange}
                 value={formData.bathrooms}
               />
               <p>Baths</p>
             </div>
-            <div className='flex items-center gap-2'>
+            <div className='flex items-center gap-2 font-custom text-lg'>
               <input
                 type='number'
                 id='regularPrice'
                 min='50'
                 max='10000000'
                 required
-                className='p-3 border border-gray-300 rounded-lg'
+                className='p-3 border border-gray-300 rounded-lg font-custom text-lg'
                 onChange={handleChange}
                 value={formData.regularPrice}
               />
-              <div className='flex flex-col items-center'>
+              <div className='flex flex-col items-center font-custom text-lg'>
                 <p>Regular price</p>
                 {formData.type === 'rent' && (
                   <span className='text-xs'>($ / month)</span>
@@ -308,7 +309,7 @@ const listingId=params.listingId;
               </div>
             </div>
             {formData.offer && (
-              <div className='flex items-center gap-2'>
+              <div className='flex items-center gap-2 font-custom text-lg'>
                 <input
                   type='number'
                   id='discountPrice'
@@ -319,11 +320,11 @@ const listingId=params.listingId;
                   onChange={handleChange}
                   value={formData.discountPrice}
                 />
-                <div className='flex flex-col items-center'>
+                <div className='flex flex-col items-center font-custom text-lg'>
                   <p>Discounted price</p>
 
                   {formData.type === 'rent' && (
-                    <span className='text-xs'>($ / month)</span>
+                    <span className='text-xs font-custom '>($ / month)</span>
                   )}
                 </div>
               </div>
@@ -333,11 +334,11 @@ const listingId=params.listingId;
         <div className='flex flex-col flex-1 gap-4'>
           <p className='font-semibold'>
             Images:
-            <span className='font-normal text-gray-600 ml-2'>
+            <span className='font-normal text-gray-600 ml-2 font-custom text-lg'>
               The first image will be the cover (max 6)
             </span>
           </p>
-          <div className='flex gap-4'>
+          <div className='flex gap-4 font-custom '>
             <input
               onChange={(e) => setFiles(e.target.files)}
               className='p-3 border border-gray-300 rounded w-full'
@@ -350,12 +351,12 @@ const listingId=params.listingId;
               type='button'
               disabled={uploading}
               onClick={handleImageSubmit}
-              className='p-3 text-green-700 border border-green-700 rounded uppercase hover:shadow-lg disabled:opacity-80'
+              className='p-3 text-green-700 border border-green-700 rounded uppercase hover:shadow-lg disabled:opacity-80 font-custom '
             >
               {uploading ? 'Uploading...' : 'Upload'}
             </button>
           </div>
-          <p className='text-red-700 text-sm'>
+          <p className='text-red-700 text-sm font-custom '>
             {imageUploadError && imageUploadError}
           </p>
           {formData.imageUrls.length > 0 &&
@@ -372,7 +373,7 @@ const listingId=params.listingId;
                 <button
                   type='button'
                   onClick={() => handleRemoveImage(index)}
-                  className='p-3 text-red-700 rounded-lg uppercase hover:opacity-75'
+                  className='p-3 text-red-700 rounded-lg uppercase hover:opacity-75 font-custom text-lg'
                 >
                   Delete
                 </button>
@@ -380,9 +381,9 @@ const listingId=params.listingId;
             ))}
           <button
             disabled={loading || uploading}
-            className='p-3 bg-slate-700 text-white rounded-lg uppercase hover:opacity-95 disabled:opacity-80'
+            className='p-3 bg-slate-700 text-white rounded-lg uppercase hover:opacity-95 disabled:opacity-80 font-custom text-lg'
           >
-            {loading ? 'Creating...' : 'Update listing'}
+            {loading ? 'Updating...' : 'Update listing'}
           </button>
           {error && <p className='text-red-700 text-sm'>{error}</p>}
         </div>

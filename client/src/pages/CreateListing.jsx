@@ -155,12 +155,12 @@ export default function CreateListing() {
     }
   };
   return (
-    <main className='p-3 max-w-4xl mx-auto'>
-      <h1 className='text-3xl font-semibold text-center my-7'>
+    <main className='p-6 max-w-4xl mx-auto border border-slate-900 shadow-2xl mt-8'>
+      <h1 className=' p-2 text-3xl font-semibold text-center my-7 font-custom text-slate-100 bg-slate-600'>
         Create a Listing
       </h1>
-      <form onSubmit={handleSubmit} className='flex flex-col sm:flex-row gap-4'>
-        <div className='flex flex-col gap-4 flex-1'>
+      <form onSubmit={handleSubmit} className='flex flex-col sm:flex-row gap-12'>
+        <div className='flex flex-col gap-4 flex-1 font-custom text-lg'>
           <input
             type='text'
             placeholder='Name'
@@ -310,7 +310,7 @@ export default function CreateListing() {
             )}
           </div>
         </div>
-        <div className='flex flex-col flex-1 gap-4'>
+        <div className='flex flex-col flex-1 gap-4 font-custom text-lg'>
           <p className='font-semibold'>
             Images:
             <span className='font-normal text-gray-600 ml-2'>
@@ -330,7 +330,7 @@ export default function CreateListing() {
               type='button'
               disabled={uploading}
               onClick={handleImageSubmit}
-              className='p-3 text-green-700 border border-green-700 rounded uppercase hover:shadow-lg disabled:opacity-80'
+              className='p-3 text-green-700 border border-green-700 rounded uppercase hover:shadow-lg disabled:opacity-80 text-s' 
             >
               {uploading ? 'Uploading...' : 'Upload'}
             </button>

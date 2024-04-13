@@ -1,6 +1,10 @@
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+ @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Brygada+1918&family=Cormorant+Garamond:wght@300&family=DM+Serif+Display&family=IBM+Plex+Serif:wght@700&family=Instrument+Serif&family=Oswald:wght@300&family=Playfair+Display:ital,wght@0,539;1,539&family=Roboto+Slab:wght@100..900&family=Young+Serif&display=swap') ;
 body{
-    background-color: rgb(241,245,245,2450);
+    background-color: rgb(241, 245, 241);
 }

@@ -20,6 +20,13 @@ export const updateUser = async (req, res, next) => {
     if (req.body.password) {
       req.body.password = bcryptjs.hashSync(req.body.password, 10);
     }
+    console.log(req.body.username)
+    const check = await User.findOne({ username: req.body.username });
+    console.log(check);
+
+    if(check){
+      return next(errorHandler(404, 'User already exists!'));
+    }
 
     const updatedUser = await User.findByIdAndUpdate(
       req.params.id,
