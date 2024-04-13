@@ -5,9 +5,8 @@ import logo from '../assets/logo.png'
 export default function About() {
   return (
     <div className='py-20 px-4 max-w-6xl mx-auto'>
-      <h1 className='text-4xl font-bold mb-5 text-slate-600 font-custom flex items-center mr-0'> {/* Add flex and items-center classes */}
+      <h1 className='text-4xl font-bold mb-5 text-slate-800 font-custom flex items-center mr-0'> {/* Add flex and items-center classes */}
         About Movease
-        <img src={logo} alt="About Movease" className="h-14 ml-0" /> {/* Adjust size and margin-left for spacing */}
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div>

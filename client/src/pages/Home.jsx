@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import SwiperCore from 'swiper';
 import 'swiper/css/bundle';
-import ListingItem from '../components/ListingItem';
+import ListingItem from '../Components/Listingitem';
 import imageSrc from '../assets/house5.jpg' // Import your image
 import 'typeface-roboto-slab';
 
