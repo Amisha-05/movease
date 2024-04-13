@@ -31,7 +31,7 @@ export default function Header() {
         <Link to='/'>
           <div className="flex items-center">
             <img src={Logo} alt="Logo" className="h-15 w-12 mr-0" />
-            <h1 className='font-bold sm:text-2xl lg:text-3xl flex flex-wrap font-custom text-xl'>
+            <h1 className='font-bold sm:text-xs lg:text-3xl flex flex-wrap font-custom text-xl'>
               <span className='text-slate-500'>Mov</span>
               <span className='text-slate-700'>Ease</span>
             </h1>
@@ -57,7 +57,7 @@ export default function Header() {
         
         <ul className='flex gap-2 sm:gap-4'>
           <Link to='/'>
-            <li className=' sm:inline text-slate-700 hover:underline font-custom text-sm sm:text-lg'>
+            <li className='  hidden sm:inline text-slate-700 hover:underline font-custom text-sm sm:text-lg'>
               Home
             </li>
           </Link>
