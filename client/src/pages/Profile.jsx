@@ -69,7 +69,7 @@ export default function Profile() {
     try {
 
       dispatch(updateUserStart());
-      const res = await fetch(`http://localhost:3000/api/user/update/${currentUser._id}`,
+      const res = await fetch(`/api/user/update/${currentUser._id}`,
         {
           method: 'POST',
           headers:
@@ -99,7 +99,7 @@ export default function Profile() {
   const handleDeleteUser = async () => {
     try {
       dispatch(deleteUserStart());
-      const res = await fetch(`http://localhost:3000/api/user/delete/${currentUser._id}`,
+      const res = await fetch(`/api/user/delete/${currentUser._id}`,
 
         {
           method: 'DELETE',
