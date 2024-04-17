@@ -224,7 +224,7 @@ export default function Profile() {
         {/* User Listings */}
         {userListings && userListings.length > 0 && (
           <div className='flex flex-col gap-4 '>
-            <h1 className='text-center mt-4 lg:text-2xl font-semibold font-custom text-slate-700 ' >Your Listings</h1>
+            <h1 className='text-center mt-4 lg:text-xl font-semibold font-custom text-slate-700 ' >Your Listings</h1>
             {userListings.map((listing) => (
               <div
                 key={listing._id}
@@ -238,13 +238,13 @@ export default function Profile() {
                   />
                 </Link>
                 <Link
-                  className='text-slate-700 font-semibold  hover:underline truncate flex-1 font-custom lg:text-2xl'
+                  className='text-slate-700 font-semibold  hover:underline truncate flex-1 font-custom lg:text-xl'
                   to={`/listing/${listing._id}`}
                 >
                   <p>{listing.name}</p>
                 </Link>
 
-                <div className='flex flex-col item-center font-custom lg:text-2xl sm:text-sm'>
+                <div className='flex flex-col item-center font-custom lg:text-lg sm:text-sm'>
                   <button onClick={() => handleListingDelete(listing._id)}
 
                     className='text-red-700 uppercase font-custom'
@@ -253,7 +253,7 @@ export default function Profile() {
                   </button>
                   <Link to={`/update-listing/${listing._id}`}>
 
-                    <button className='text-green-700 uppercase font-custom lg:text-2xl sm:text-sm'>Edit</button>
+                    <button className='text-green-700 uppercase font-custom lg:text-lg sm:text-sm'>Edit</button>
 
                   </Link>
                 </div>
